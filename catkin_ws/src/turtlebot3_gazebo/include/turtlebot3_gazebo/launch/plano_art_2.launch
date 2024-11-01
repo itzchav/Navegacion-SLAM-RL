@@ -1,0 +1,149 @@
+<launch>
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" />
+   <!-- Turtle -->
+ <arg name="model" default="burger"/>
+  <arg name="x_pos" default="0"/>
+  <arg name="y_pos" default="0"/>
+  <arg name="z_pos" default="0.15"/>
+
+   <!-- Amazon grande -->
+  <arg name="x" default="2.39"/>
+  <arg name="y" default="-0.632"/>
+  <arg name="z" default="0"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="0"/>
+
+
+ <!-- Mercado Libre -->
+  <arg name="x2" default="3.42"/>
+  <arg name="y2" default="-0.717"/>
+  <arg name="z2" default="0"/>
+  <arg name="roll2" default="0"/>
+  <arg name="pitch2" default="0"/>
+  <arg name="yaw2" default="0"/>
+
+ <!-- Comida -->
+  <arg name="x3" default="2.18"/>
+  <arg name="y3" default="-1.69"/>
+  <arg name="z3" default="0"/>
+  <arg name="roll3" default="0"/>
+  <arg name="pitch3" default="0"/>
+  <arg name="yaw3" default="0"/>
+  
+  <!-- Blanca-->
+  <arg name="x4" default="1.06"/>
+  <arg name="y4" default="-1.395"/>
+  <arg name="z4" default="0"/>
+  <arg name="roll4" default="0"/>
+  <arg name="pitch4" default="0"/>
+  <arg name="yaw4" default="0"/>
+
+  <!-- Amazon peq -->
+  <arg name="x5" default="2.21"/>
+  <arg name="y5" default="-2.06"/>
+  <arg name="z5" default="0"/>
+  <arg name="roll5" default="0"/>
+  <arg name="pitch5" default="0"/>
+  <arg name="yaw5" default="0"/>
+
+  <!-- Basura1 -->
+  <arg name="x6" default="1.06"/>
+  <arg name="y6" default="0"/>
+  <arg name="z6" default="0"/>
+  <arg name="roll6" default="0"/>
+  <arg name="pitch6" default="0"/>
+  <arg name="yaw6" default="0"/>
+<!-- Basura2 -->
+  <arg name="x62" default="2.06"/>
+  <arg name="y62" default="-0.95"/>
+  <arg name="z62" default="0"/>
+  <arg name="roll62" default="0"/>
+  <arg name="pitch62" default="0"/>
+  <arg name="yaw62" default="0"/>
+  <!-- Pared -->
+  <arg name="x7" default="-1"/>
+  <arg name="y7" default="0.33"/>
+  <arg name="z7" default="0"/>
+  <arg name="roll7" default="0"/>
+  <arg name="pitch7" default="0"/>
+  <arg name="yaw7" default="0"/>
+  
+<node
+    name="caja1"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find caja1)/urdf/caja1.urdf -urdf -model caja1 -x $(arg x) -y $(arg y) -z $(arg z)
+              -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"
+    output="screen" />
+   
+<node
+    name="caja2"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find caja2)/urdf/caja2.urdf -urdf -model caja2 -x $(arg x2) -y $(arg y2) -z $(arg z2)
+              -R $(arg roll2) -P $(arg pitch2) -Y $(arg yaw2)"
+    output="screen" />
+ 
+<node
+    name="caja3"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find caja3)/urdf/caja3.urdf -urdf -model caja3 -x $(arg x3) -y $(arg y3) -z $(arg z3)
+              -R $(arg roll3) -P $(arg pitch3) -Y $(arg yaw3)"
+    output="screen" />
+
+<node
+    name="caja4"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find caja4)/urdf/caja4.urdf -urdf -model caja4 -x $(arg x4) -y $(arg y4) -z $(arg z4)
+              -R $(arg roll4) -P $(arg pitch4) -Y $(arg yaw4)"
+    output="screen" />
+
+<node
+    name="caja5"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find caja5)/urdf/caja5.urdf -urdf -model caja5 -x $(arg x5) -y $(arg y5) -z $(arg z5)
+              -R $(arg roll5) -P $(arg pitch5) -Y $(arg yaw5)"
+    output="screen" />
+
+<node
+    name="caja6"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find caja6)/urdf/caja6.urdf -urdf -model caja6 -x $(arg x6) -y $(arg y6) -z $(arg z6)
+              -R $(arg roll6) -P $(arg pitch6) -Y $(arg yaw6)"
+    output="screen" />  
+
+<node
+    name="caja6a"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find caja6)/urdf/caja6a.urdf -urdf -model caja6a -x $(arg x62) -y $(arg y62) -z $(arg z62)
+              -R $(arg roll62) -P $(arg pitch62) -Y $(arg yaw62)"
+    output="screen" />
+<node
+    name="pared"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find pared)/urdf/pared.urdf -urdf -model pared -x $(arg x7) -y $(arg y7) -z $(arg z7)
+              -R $(arg roll7) -P $(arg pitch7) -Y $(arg yaw7)"
+    output="screen" />  
+ <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+<node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+    <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3 -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+ 
+</launch>

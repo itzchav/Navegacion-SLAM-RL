@@ -1,0 +1,46 @@
+<launch>
+    <arg name="model" default="burger"/>
+    <arg name="x_pos" default="0.0"/>
+    <arg name="y_pos" default="0.0"/>
+    <arg name="z_pos" default="0.12"/>
+    <arg name="roll" default="0"/>
+    <arg name="pitch" default="0"/>
+    <arg name="yaw" default="-1.561545"/>
+    <!-- Plano 1.6
+    <arg name="x2" default="32.700508"/>
+    <arg name="y2" default="-8.362269"/>-->
+    <arg name="x2" default="24.666824"/>
+  <arg name="y2" default="-18.216396"/>
+  <arg name="z2" default="0"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="false"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+<node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find Plano_completo)/urdf/Plano_completo.urdf -urdf -model Plano_completo -x $(arg x2) -y $(arg y2) -z $(arg z2) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) "
+    output="screen" />
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+  <!-- SLAM -->
+ 
+  <arg name="open_rviz" default="false"/>
+
+  <!-- TurtleBot3 -->
+  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
+  </include>
+   
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot3_gazebo)/rviz/turtlebot3_gazebo_model.rviz"/>
+
+  
+  
+</launch>
