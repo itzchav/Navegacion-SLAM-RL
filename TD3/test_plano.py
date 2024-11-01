@@ -5,10 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from posgrado_env_vedolyne import GazeboEnv
-
-import rospy
-
+from plano_env_slam_sin_prm import GazeboEnv
 
 
 class Actor(nn.Module):
@@ -47,20 +44,20 @@ class TD3(object):
 
 # Set the parameters for the implementation
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")  # cuda or cpu
-seed = 20  # Random seed number
-max_ep = 500  # maximum number of steps per episode
-#file_name = "TD3_velodyne_critic_4e5_aleatorio_posgrado_2"  # name of the file to load the policy from
-#file_name = "TD3_velodyne_critic_5e5_aleatorio_posgrado_2"  # name of the file to load the policy from
-file_name = "TD3_velodyne_reward_less_60dim_4_5e5_01_expl_meta_reward_dist_1_entre_dist_1"  # name of the file to load the policy from
-
+seed = 0  # Random seed number
+max_ep = 2e6  # maximum number of steps per episode
+file_name = "TD3_velodyne_1e6_rewards_less"  # name of the file to load the policy from
+#file_name = "TD3_velodyne_reward_less_60dim_4_5e6_01_expl_meta_reward_dist_1_entre_dist_3"  # name of the file to load the policy from
 
 # Create the testing environment
-environment_dim = 60
+environment_dim = 20
 robot_dim = 4
-env = GazeboEnv("multi_robot_scenario.launch", environment_dim)
+#env = GazeboEnv("plano_completo_gmapping_noetic.launch", environment_dim)
+env = GazeboEnv("plano_completo_obstaculos_noetic.launch", environment_dim)
+
+#env = GazeboEnv("plano_completo_obstaculos_rviz.launch", environment_dim)
+#env = GazeboEnv("plano_completo.launch", environment_dim)
 time.sleep(5)
-sleep_time = 5  # en segundos
-rospy.loginfo("Esperando %d segundos...", sleep_time)
 torch.manual_seed(seed)
 np.random.seed(seed)
 state_dim = environment_dim + robot_dim
@@ -69,7 +66,7 @@ action_dim = 2
 # Create the network
 network = TD3(state_dim, action_dim)
 try:
-    network.load(file_name, "./pytorch_models")
+    network.load(file_name, "./models")
 except:
     raise ValueError("Could not load the stored model parameters")
 
