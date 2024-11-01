@@ -32,12 +32,12 @@ $ python3 train_turtlebot.py.py
 
 Gazebo environment:
 <p align="center">
-    <img width=80% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/turtle_gazebo.png">
+    <img width=60% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/turtle_gazebo.png">
 </p>
 
 Gazebo environment:
 <p align="center">
-    <img width=80% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/turtle_rviz.png">
+    <img width=60% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/turtle_rviz.png">
 </p>
 
 
@@ -72,7 +72,7 @@ $ python3 test_plano_offline.py
 ```
 
 <p align="center">
-    <img width=80% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/trayectoria.png">
+    <img width=60% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/trayectoria.png">
 </p>
 
 Para ejecutar el código de Navegación con trayectoria (on-line): 
@@ -93,7 +93,7 @@ $ python3 test_plano_online.py
 ```
 
 <p align="center">
-    <img width=80% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/slam_rl.png">
+    <img width=60% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/slam_rl.png">
 </p>
 
 
