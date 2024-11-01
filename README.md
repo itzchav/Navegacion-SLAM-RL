@@ -81,7 +81,7 @@ $ python3 test_plano_online.py
 
 Gazebo environment:
 <p align="center">
-    <img width=80% src="https://github.com/reiniscimurs/DRL-robot-navigation/blob/main/env1.png">
+    <img width=80% src="[https://github.com/reiniscimurs/DRL-robot-navigation/blob/main/env1.png](https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/turtle_cimurs.png)">
 </p>
 
 Rviz:
