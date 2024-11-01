@@ -11,14 +11,9 @@ $ cd ~
 $ git clone https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo.git
 ```
 
-Compile the workspace:
-```shell
-$ cd ~/DRL-robot-navigation/catkin_ws
-### Compile
-$ catkin_make_isolated
-```
 
-Open a terminal and set up sources:
+
+En la terminal ejecutar los siguientes comandos:
 ```shell
 $ export ROS_HOSTNAME=localhost
 $ export ROS_MASTER_URI=http://localhost:11311
@@ -29,7 +24,7 @@ $ cd ~/DRL-robot-navigation/catkin_ws
 $ source devel_isolated/setup.bash
 ```
 
-Run the training:
+Para ejecutar el entrenamiento 
 ```shell
 $ cd ~/DRL-robot-navigation/TD3
 $ python3 train_velodyne_td3.py
