@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Plano_obstaculos">
+<gazebo reference="Escritorios"> <material>Gazebo/Black</material> </gazebo>
+<gazebo reference="Sillas"> <material>Gazebo/DarkGrey</material> </gazebo>
+<gazebo reference="Paredes"> <material>Gazebo/Gold</material> </gazebo>
+<gazebo reference="Plano"> <material>Gazebo/WoodFloor</material> </gazebo>
+  <link
+    name="Plano">
+    <inertial>
+      <origin
+        xyz="-8.3771012885608 -17.8787342671875 0.154574729765122"
+        rpy="0 0 0" />
+      <mass
+        value="105773.496434206" />
+      <inertia
+        ixx="4345973.25056542"
+        ixy="-517592.207533352"
+        ixz="3.53763211193037E-11"
+        iyy="3034064.33966892"
+        iyz="2.66757526866734E-10"
+        izz="7377549.61887828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Plano.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Plano.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Paredes">
+    <inertial>
+      <origin
+        xyz="-8.33486592764713 1.62 17.2787605001807"
+        rpy="0 0 0" />
+      <mass
+        value="106998.234725186" />
+      <inertia
+        ixx="1884398.41780361"
+        ixy="2.94611619678244E-11"
+        ixz="-46224.2076186337"
+        iyy="2975088.2144271"
+        iyz="1.78280751339617E-10"
+        izz="1251187.14871118" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Paredes.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Paredes.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="paredes"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="Plano" />
+    <child
+      link="Paredes" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Mural">
+    <inertial>
+      <origin
+        xyz="-8.9133737468096 1.62 20.7325397890786"
+        rpy="0 0 0" />
+      <mass
+        value="5471.98532264628" />
+      <inertia
+        ixx="4114.24896446467"
+        ixy="-7.20014707628193E-13"
+        ixz="8.82258437282567E-14"
+        iyy="67436.431005008"
+        iyz="-1.12502298066905E-14"
+        izz="71530.1600245127" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Mural.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Mural.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mural"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="Plano" />
+    <child
+      link="Mural" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Escritorios">
+    <inertial>
+      <origin
+        xyz="-10.707418909614 0.474076989648717 -8.16466688805438"
+        rpy="0 0 0" />
+      <mass
+        value="3550.76795756857" />
+      <inertia
+        ixx="657.620070679481"
+        ixy="-0.0224136843097853"
+        ixz="-47.9494436861656"
+        iyy="1117.13974257674"
+        iyz="-0.113062286977379"
+        izz="898.949924210325" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Escritorios.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Escritorios.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="escritorios"
+    type="fixed">
+    <origin
+      xyz="-12.5447567464246 -4.40841503831656 0.120000000000005"
+      rpy="1.5707963267949 0 2.55419064663925" />
+    <parent
+      link="Plano" />
+    <child
+      link="Escritorios" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Botes">
+    <inertial>
+      <origin
+        xyz="-10.2024121833617 0.221862551470592 -2.46960992224127"
+        rpy="0 0 0" />
+      <mass
+        value="153.926715683122" />
+      <inertia
+        ixx="2.74181939798813"
+        ixy="-3.85223685887766E-15"
+        ixz="0.0352710984864867"
+        iyy="1.75944101800951"
+        iyz="-1.56068127866274E-14"
+        izz="2.4648494899137" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Botes.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Botes.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="botes"
+    type="fixed">
+    <origin
+      xyz="-17.9717798005568 -26.1510874426371 0.120000000000002"
+      rpy="1.5707963267949 0 -2.15819833374566" />
+    <parent
+      link="Plano" />
+    <child
+      link="Botes" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Sillas">
+    <inertial>
+      <origin
+        xyz="-0.00737317606634313 0.437725988586924 -11.5805190744389"
+        rpy="0 0 0" />
+      <mass
+        value="1450.46121787082" />
+      <inertia
+        ixx="90.3015487054743"
+        ixy="-1.1842560707041"
+        ixz="-0.0547897409667399"
+        iyy="81.7015687320995"
+        iyz="-4.96253730009256"
+        izz="90.7106343159441" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Sillas.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_obstaculos/meshes/Sillas.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="sillas"
+    type="fixed">
+    <origin
+      xyz="-14.6394745785491 -26.5367427727246 0.120000000000002"
+      rpy="1.5707963267949 0 -0.602403534081331" />
+    <parent
+      link="Plano" />
+    <child
+      link="Sillas" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

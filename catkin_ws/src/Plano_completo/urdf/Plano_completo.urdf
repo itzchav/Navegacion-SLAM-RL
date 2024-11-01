@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Plano_completo">
+<gazebo reference="Paredes"> <material>Gazebo/Gold</material> </gazebo>
+<gazebo reference="Plano"> <material>Gazebo/WoodFloor</material> </gazebo>
+  <link
+    name="Plano">
+    <inertial>
+      <origin
+        xyz="-8.3771012885608 -17.8787342671875 0.154574729765122"
+        rpy="0 0 0" />
+      <mass
+        value="105773.496434206" />
+      <inertia
+        ixx="4345973.25056542"
+        ixy="-517592.207533352"
+        ixz="3.53223562229851E-11"
+        iyy="3034064.33966892"
+        iyz="2.66785595039706E-10"
+        izz="7377549.61887828" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_completo/meshes/Plano.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_completo/meshes/Plano.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Paredes">
+    <inertial>
+      <origin
+        xyz="-8.33486592764714 1.62 17.2787605001807"
+        rpy="0 0 0" />
+      <mass
+        value="106998.234725186" />
+      <inertia
+        ixx="1884398.41780361"
+        ixy="1.24386270804838E-10"
+        ixz="-46224.2076186336"
+        iyy="2975088.2144271"
+        iyz="1.60611129058795E-10"
+        izz="1251187.14871118" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_completo/meshes/Paredes.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_completo/meshes/Paredes.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="paredes"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="Plano" />
+    <child
+      link="Paredes" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Mural">
+    <inertial>
+      <origin
+        xyz="-8.9133737468096 1.62 20.7325397890786"
+        rpy="0 0 0" />
+      <mass
+        value="5471.98532264628" />
+      <inertia
+        ixx="4114.24896446467"
+        ixy="-7.20014707628193E-13"
+        ixz="8.82258437282567E-14"
+        iyy="67436.431005008"
+        iyz="-1.12502298066905E-14"
+        izz="71530.1600245127" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_completo/meshes/Mural.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Plano_completo/meshes/Mural.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mural"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="Plano" />
+    <child
+      link="Mural" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
