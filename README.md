@@ -45,22 +45,34 @@ $ python3 test_velodyne_td3.py
 
 
 Para ejecutar el código de Navegación con trayectoria (off-line): 
+
+Para cambiar el entorno
+
+Sin obtaculos:
+```shell
+env = GazeboEnv("plano_completo_obstaculos_rviz.launch", environment_dim)
+```
+Con obtaculos:
+```shell
+env = GazeboEnv("plano_completo.launch", environment_dim)
+```
+
 ```shell
 $ cd ~/DRL-robot-navigation/TD3
 $ python3 test_plano_offline.py
 ```
 
 Para ejecutar el código de Navegación con trayectoria (on-line): 
-Modificar el enviroment que contiene el slam
+Modificar el enviroment que contiene SLAM
 
 Para el entorno sin obstaculos:
-
-#env = GazeboEnv("plano_completo_gmapping_noetic.launch", environment_dim)
-
+```shell
+env = GazeboEnv("plano_completo_gmapping_noetic.launch", environment_dim)
+```
 Para el entorno con obstaculos:
-
+```shell
 env = GazeboEnv("plano_completo_obstaculos_noetic.launch", environment_dim)
-
+```
 
 ```shell
 $ cd ~/DRL-robot-navigation/TD3
