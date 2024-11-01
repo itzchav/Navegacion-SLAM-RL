@@ -1,4 +1,4 @@
-# Navegacion con Aprendizaje por Refuerzo
+# Navegación con Aprendizaje por Refuerzo
 Basado en el [repositorio](https://github.com/reiniscimurs/DRL-robot-navigation) de Reinis Cimurs https://github.com/reiniscimurs/DRL-robot-navigation
 
 En el repositorio se encuentran los pasos necesarios para la intalación.
