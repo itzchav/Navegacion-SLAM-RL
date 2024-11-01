@@ -24,27 +24,47 @@ $ cd ~/DRL-robot-navigation/catkin_ws
 $ source devel_isolated/setup.bash
 ```
 
-Para ejecutar el entrenamiento 
+Para ejecutar el entrenamiento:
 ```shell
 $ cd ~/DRL-robot-navigation/TD3
-$ python3 train_velodyne_td3.py
+$ python3 train_turtlebot.py.py
 ```
 
-To check the training process on tensorboard:
-```shell
-$ cd ~/DRL-robot-navigation/TD3
-$ tensorboard --logdir runs
-```
 
-To kill the training process:
+
+Para terminar el proceso:
 ```shell
 $ killall -9 rosout roslaunch rosmaster gzserver nodelet robot_state_publisher gzclient python python3
 ```
 
-Once training is completed, test the model:
+Para ejecutar el código de prueba: 
 ```shell
 $ cd ~/DRL-robot-navigation/TD3
 $ python3 test_velodyne_td3.py
+```
+
+
+Para ejecutar el código de Navegación con trayectoria (off-line): 
+```shell
+$ cd ~/DRL-robot-navigation/TD3
+$ python3 test_plano_offline.py
+```
+
+Para ejecutar el código de Navegación con trayectoria (on-line): 
+Modificar el enviroment que contiene el slam
+
+Para el entorno sin obstaculos:
+
+#env = GazeboEnv("plano_completo_gmapping_noetic.launch", environment_dim)
+
+Para el entorno con obstaculos:
+
+env = GazeboEnv("plano_completo_obstaculos_noetic.launch", environment_dim)
+
+
+```shell
+$ cd ~/DRL-robot-navigation/TD3
+$ python3 test_plano_online.py
 ```
 
 Gazebo environment:
