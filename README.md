@@ -30,6 +30,15 @@ $ cd ~/DRL-robot-navigation/TD3
 $ python3 train_turtlebot.py.py
 ```
 
+Gazebo environment:
+<p align="center">
+    <img width=80% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/turtle_gazebo.png">
+</p>
+
+Gazebo environment:
+<p align="center">
+    <img width=80% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/turtle_rviz.png">
+</p>
 
 
 Para terminar el proceso:
@@ -62,6 +71,10 @@ $ cd ~/DRL-robot-navigation/TD3
 $ python3 test_plano_offline.py
 ```
 
+<p align="center">
+    <img width=80% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/trayectoria.png">
+</p>
+
 Para ejecutar el código de Navegación con trayectoria (on-line): 
 Modificar el enviroment que contiene SLAM
 
@@ -79,13 +92,8 @@ $ cd ~/DRL-robot-navigation/TD3
 $ python3 test_plano_online.py
 ```
 
-Gazebo environment:
 <p align="center">
-    <img width=80% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/turtle_cimurs.png">
+    <img width=80% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/slam_rl.png">
 </p>
 
-Rviz:
-<p align="center">
-    <img width=80% src="https://github.com/reiniscimurs/DRL-robot-navigation/blob/main/velodyne.png">
-</p>
 
