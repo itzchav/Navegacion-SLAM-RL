@@ -8,7 +8,7 @@ Para clonar este repositorio:
 ```shell
 $ cd ~
 ### Clone this repo
-$ git clone [https://github.com/reiniscimurs/DRL-robot-navigation](https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo.git)
+$ git clone https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo.git
 ```
 
 Compile the workspace:
