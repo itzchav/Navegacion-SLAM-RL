@@ -1,59 +1,49 @@
 <launch>
-  <arg name="model" default="burger"/>
-  <arg name="x_pos" default="0"/>
-  <arg name="y_pos" default="0"/>
-  <arg name="z_pos" default="0.15"/>
-  <arg name="roll" default="0"/>
-  <arg name="pitch" default="0"/>
-  <arg name="yaw" default="0"/>
-  <!-- Plano 1.6-->
-  <arg name="x2" default="8.927857"/>
-  <arg name="y2" default="32.656815"/>
-  <arg name="z2" default="0"/>
-<arg name="x3" default="-14.610122"/>
-  <arg name="y3" default="-0.892841"/>
-  <arg name="z3" default="0.116413"/>
-  
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/plano.world"/>
-    <!-- <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/>-->
-    <arg name="paused" value="false"/>
-    <arg name="use_sim_time" value="true"/>
-    <arg name="gui" value="true"/>
-    <arg name="headless" value="false"/>
-    <arg name="debug" value="false"/>
- </include> 
+    <arg name="model" default="burger"/>
+    <arg name="x_pos" default="0.0"/>
+    <arg name="y_pos" default="0.0"/>
+    <arg name="z_pos" default="0.15"/>
+    <arg name="roll" default="0"/>
+    <arg name="pitch" default="0"/>
+    <arg name="yaw" default="-1.561545"/>
+    <!-- Plano -->
+    <arg name="x2" default="32.700508"/>
+    <arg name="y2" default="-8.362269"/>
+    <arg name="z2" default="0"/>
 
-  <node
-    name="spawn_model"
-    pkg="gazebo_ros"
-    type="spawn_model"
-    args="-file $(find Plano_obstaculos)/urdf/Plano_obstaculos.urdf -urdf -model Plano_obstaculos -x $(arg x2) -y $(arg y2) -z $(arg z2)"
-    output="screen" />
-  
-<param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
 
-  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+    <node
+        name="spawn_model"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        args="-file $(find Plano_obstaculos)/urdf/Plano_obstaculos.urdf -urdf -model Plano_obstaculos -x $(arg x2) -y $(arg y2) -z $(arg z2) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) "
+        output="screen" />
+    
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
 
-  <!-- SLAM -->
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+
+    <!-- Esperar un momento para asegurarse de que el plano se haya generado -->
+    <node pkg="roscpp" type="sleep" name="wait_for_spawn_model" args="10" /> <!-- Pausa de 10 segundos -->
+
+    <!-- Esperar antes de iniciar el SLAM -->
+    <node pkg="roscpp" type="sleep" name="wait_for_slam" args="10" /> <!-- Pausa de 10 segundos -->
+
+    <!-- SLAM -->
+    <arg name="open_rviz" default="true"/>
+
+    <!-- TurtleBot3 -->
+    <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
+    </include>
+
  
-  <arg name="open_rviz" default="true"/>
-
-  <!-- TurtleBot3 -->
-  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
-  </include>
-
-  <!-- SLAM: Gmapping, Cartographer, Hector, Karto, Frontier_exploration, RTAB-Map -->
-  <include file="$(find turtlebot3_slam)/launch/turtlebot3_gmapping.launch">
-    <arg name="model" value="$(arg model)"/>
-    <arg name="configuration_basename" value="turtlebot3_lds_2d.lua"/>
-  </include>
-
-  <!-- rviz -->
-  <group if="$(arg open_rviz)"> 
-    <node pkg="rviz" type="rviz" name="rviz" required="true"
-          args="-d $(find turtlebot3_slam)/rviz/turtlebot3_gmapping.rviz"/>
-  </group>
-
-
 </launch>
+
