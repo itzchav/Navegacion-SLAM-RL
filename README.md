@@ -23,7 +23,7 @@ $ source ~/.bashrc
 $ cd ~/DRL-robot-navigation/catkin_ws
 $ source devel_isolated/setup.bash
 ```
-
+## Entrenamiento
 Para ejecutar el entrenamiento:
 ```shell
 $ cd ~/DRL-robot-navigation/TD3
@@ -45,7 +45,7 @@ Para terminar el proceso:
 ```shell
 $ killall -9 rosout roslaunch rosmaster gzserver nodelet robot_state_publisher gzclient python python3
 ```
-
+## Prueba
 Para ejecutar el código de prueba: 
 ```shell
 $ cd ~/DRL-robot-navigation/TD3
@@ -53,7 +53,7 @@ $ python3 test_velodyne_td3.py
 ```
 
 
-Para ejecutar el código de Navegación con trayectoria (off-line): 
+Para ejecutar el código de Navegación con trayectoria con ruta estática: 
 
 Para cambiar el entorno
 
@@ -75,7 +75,7 @@ $ python3 test_plano_offline.py
     <img width=40% src="https://github.com/itzchav/Navegacion-con-Aprendizaje-por-Refuerzo/blob/main/trayectoria.png">
 </p>
 
-Para ejecutar el código de Navegación con trayectoria (on-line): 
+Para ejecutar el código de Navegación con trayectoria con ruta dinámica: 
 Modificar el enviroment que contiene SLAM
 
 Para el entorno sin obstaculos:
