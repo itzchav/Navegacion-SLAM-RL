@@ -3,13 +3,14 @@
     <arg name="x_pos" default="0.0"/>
     <arg name="y_pos" default="0.0"/>
     <arg name="z_pos" default="0.15"/>
-    <arg name="roll" default="0"/>
-    <arg name="pitch" default="0"/>
-    <arg name="yaw" default="-1.561545"/>
-    <!-- Plano 1.6-->
+    
+    <!-- Plano-->
     <arg name="x2" default="32.700508"/>
     <arg name="y2" default="-8.362269"/>
     <arg name="z2" default="0"/>
+    <arg name="roll" default="0"/>
+    <arg name="pitch" default="0"/>
+    <arg name="yaw" default="-1.561545"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/>

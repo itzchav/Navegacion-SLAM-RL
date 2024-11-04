@@ -38,5 +38,10 @@
   </include>
    
 
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot3_gazebo)/rviz/turtlebot3_gazebo_model.rviz"/>
+  
+    <node name="odometry_initializer" pkg="turtlebot3_gazebo" type="init_topic.py" output="screen" />
+
+  
   
 </launch>

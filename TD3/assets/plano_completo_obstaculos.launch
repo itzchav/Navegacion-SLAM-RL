@@ -2,16 +2,14 @@
     <arg name="model" default="burger"/>
     <arg name="x_pos" default="0.0"/>
     <arg name="y_pos" default="0.0"/>
-    <arg name="z_pos" default="0.12"/>
-    
-    <!-- Plano -->
-  
-    <arg name="x2" default="32.700508"/>
-    <arg name="y2" default="-8.362269"/>
-    <arg name="z2" default="0"/>
+    <arg name="z_pos" default="0.15"/>
     <arg name="roll" default="0"/>
     <arg name="pitch" default="0"/>
     <arg name="yaw" default="-1.561545"/>
+    <!-- Plano -->
+    <arg name="x2" default="32.700508"/>
+    <arg name="y2" default="-8.362269"/>
+    <arg name="z2" default="0"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/>
@@ -32,18 +30,20 @@
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
 
     <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
-  <!-- SLAM -->
+
+    <!-- Esperar un momento para asegurarse de que el plano se haya generado -->
+    <node pkg="roscpp" type="sleep" name="wait_for_spawn_model" args="10" /> <!-- Pausa de 10 segundos -->
+
+    <!-- Esperar antes de iniciar el SLAM -->
+    <node pkg="roscpp" type="sleep" name="wait_for_slam" args="10" /> <!-- Pausa de 10 segundos -->
+
+    <!-- SLAM -->
+    <arg name="open_rviz" default="true"/>
+
+    <!-- TurtleBot3 -->
+    <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
+    </include>
+
  
-  <arg name="open_rviz" default="false"/>
-
-  <!-- TurtleBot3 -->
-  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
-  </include>
-   
-
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot3_gazebo)/rviz/turtlebot3_gazebo_model.rviz"/>
-
-  
-
 </launch>
 
