@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from plano_env_slam_sin_prm import GazeboEnv
+from plano_env import GazeboEnv
 
 
 class Actor(nn.Module):
@@ -52,11 +52,13 @@ file_name = "TD3_velodyne_1e6_rewards_less"  # name of the file to load the poli
 # Create the testing environment
 environment_dim = 20
 robot_dim = 4
+
 #env = GazeboEnv("plano_completo_gmapping_noetic.launch", environment_dim)
-env = GazeboEnv("plano_completo_obstaculos_noetic.launch", environment_dim)
+env = GazeboEnv("plano_completo_obstaculos_rviz.launch", environment_dim)
 
 #env = GazeboEnv("plano_completo_obstaculos_rviz.launch", environment_dim)
-#env = GazeboEnv("plano_completo.launch", environment_dim)
+#env = GazeboEnv("plano_completo_obstaculos_noetic.launch", environment_dim)
+
 time.sleep(5)
 torch.manual_seed(seed)
 np.random.seed(seed)
